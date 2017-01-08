@@ -4,7 +4,19 @@
   <meta charset="UTF-8">
   <title>Enterprise Login</title>
   <link rel="stylesheet" href="style.css">
-
+  <script src="jquery-3.1.1.min.js"></script>
+  <script>
+  $("form").submit(function(e) {
+    e.preventDefault(); // Prevents the page from refreshing
+    var $this = $(this); // `this` refers to the current form element
+    $.post(
+        $this.attr("action"), // Gets the URL to sent the post to
+        $this.serialize(), // Serializes form data in standard format
+        function(data) { /** code to handle response **/ },
+        "json" // The format the response should be in
+    );
+});
+  </script>
   
 </head>
 
@@ -13,21 +25,21 @@
   <div class="card"></div>
   <div class="card">
     <h1 class="title">Login</h1>
-    <form>
+    <form action="/login_validate" method="post">
       <div class="input-container">
-        <input type="text" id="user.name" required="required"/>
-        <label for="user.name">Username</label>
+        <input type="text" id="user_name" name="user_name" required="required"/>
+        <label for="user_name">Username</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-        <input type="password" id="user.password" required="required"/>
-        <label for="user.password">Password</label>
+        <input type="password" id="user_password" name="user_password" required="required"/>
+        <label for="user_password">Password</label>
         <div class="bar"></div>
       </div>
       <div class="button-container">
         <button><span>Login</span></button>
       </div>
-      <div class="footer"><a href="#">Forgot your password?</a></div>
+      <div class="footer"><a href="/Forgotpassword.html">Forgot your password?</a></div>
     </form>
   </div>
  </body>

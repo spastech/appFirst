@@ -1,0 +1,21 @@
+{
+   "_id": "1",
+   "_rev": "13-12df8fac99f5afcdedbeb9063ae4260e",
+   "user_name": "ram_admin_user",
+   "password": "ram_admin_password"
+}
+
+
+function(doc) {
+  if(doc.type == 'article') {
+    emit(null, { 'id': doc._id, 'title': doc.title });
+  }
+}
+
+
+temp:
+function(doc) {
+  if(doc.user_name == 'ram_admin_user') {
+    emit(null, { 'password': doc.password });
+  }
+}
