@@ -89,6 +89,6 @@ app.use("/",router);
   //res.sendFile(__dirname + "/public/404.html");
 //});
 
-app.listen(8081);
+app.listen(process.env.PORT || 8081);
 
 console.log("Running at Port 8081");
